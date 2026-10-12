@@ -1,0 +1,7 @@
+# Runtime data – never include in Docker build context
+.volumes/
+
+# Temporary development backups and patches
+backup_before_*/
+hoffman_patch_*/
+hoffman_ui_refresh_*/

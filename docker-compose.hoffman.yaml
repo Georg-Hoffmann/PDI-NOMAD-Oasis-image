@@ -1,0 +1,62 @@
+services:
+  elastic:
+    container_name: hoffman_v2_elastic
+
+  mongo:
+    container_name: hoffman_v2_mongo
+
+  postgresql:
+    container_name: hoffman_v2_postgresql
+
+  temporal-setup-db:
+    container_name: hoffman_v2_temporal_setup
+
+  temporal-create-namespace:
+    container_name: hoffman_v2_temporal_namespace
+
+  temporal:
+    container_name: hoffman_v2_temporal
+
+  app:
+    container_name: hoffman_v2_app
+    image: pdi-nomad-oasis:hoffman-v2-33c3a2c
+
+    command: python -m nomad.cli admin run app --with-gui --host 0.0.0.0
+    environment:
+      NOMAD_SERVICES_API_HOST: localhost
+      NOMAD_SERVICES_API_PORT: 8000
+      NOMAD_SERVICES_HTTPS: "false"
+    ports:
+      - "8000:8000"
+
+
+  worker:
+    image: pdi-nomad-oasis:hoffman-v2-33c3a2c
+    container_name: hoffman_v2_worker
+    deploy:
+      replicas: 1
+    depends_on:
+      temporal-create-namespace:
+        condition: service_completed_successfully
+
+volumes:
+  mongo:
+    name: hoffman_v2_mongo
+  elastic:
+    name: hoffman_v2_elastic
+  keycloak:
+    name: hoffman_v2_keycloak
+  postgresql:
+    name: hoffman_v2_postgresql
+  nomad_north:
+    name: hoffman_v2_north
+  prometheus_data:
+    name: hoffman_v2_prometheus
+  grafana_data:
+    name: hoffman_v2_grafana
+  alertmanager_data:
+    name: hoffman_v2_alertmanager
+
+networks:
+  default:
+    name: hoffman_v2_network
