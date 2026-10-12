@@ -19,7 +19,7 @@ services:
 
   app:
     container_name: hoffman_v2_app
-    image: pdi-nomad-oasis:hoffman-v2-fullpage-33c3a2c
+    image: pdi-nomad-oasis:hoffman-v2-navigation-fixed-33c3a2c
 
     command: python -m nomad.cli admin run app --with-gui --host 0.0.0.0
     environment:
@@ -31,7 +31,7 @@ services:
 
 
   worker:
-    image: pdi-nomad-oasis:hoffman-v2-fullpage-33c3a2c
+    image: pdi-nomad-oasis:hoffman-v2-navigation-fixed-33c3a2c
     container_name: hoffman_v2_worker
     deploy:
       replicas: 1
