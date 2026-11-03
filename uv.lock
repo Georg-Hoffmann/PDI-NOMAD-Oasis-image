@@ -4181,7 +4181,7 @@ requires-dist = [
     { name = "nomad-material-processing", marker = "extra == 'plugins'", specifier = ">=1.0.5" },
     { name = "nomad-measurements", marker = "extra == 'plugins'", specifier = ">=1.3.8" },
     { name = "nomad-north-jupyter", marker = "extra == 'plugins'", specifier = ">=0.2.6" },
-    { name = "pdi-nomad-plugin", marker = "extra == 'plugins'", git = "https://github.com/Georg-Hoffmann/pdi-nomad-plugin.git?branch=feature%2Fpdi-lab-workspace" },
+    { name = "pdi-nomad-plugin", marker = "extra == 'plugins'", git = "https://github.com/Georg-Hoffmann/pdi-nomad-plugin.git?rev=64a905c" },
     { name = "pynxtools", extras = ["spm"], marker = "extra == 'plugins'", specifier = ">=0.15.1" },
     { name = "pynxtools-spm", marker = "extra == 'plugins'", specifier = ">=0.4.0" },
     { name = "statsmodels", marker = "extra == 'plugins'" },
@@ -5324,7 +5324,7 @@ wheels = [
 [[package]]
 name = "pdi-nomad-plugin"
 version = "0.0.0"
-source = { git = "https://github.com/Georg-Hoffmann/pdi-nomad-plugin.git?branch=feature%2Fpdi-lab-workspace#483b0a6379314cdd8eebd4863aa3d54d9de57c31" }
+source = { git = "https://github.com/Georg-Hoffmann/pdi-nomad-plugin.git?rev=64a905c#64a905c3d715dac4c469a9b3f7d26bb96a33acc5" }
 dependencies = [
     { name = "epic-scraper" },
     { name = "nomad-lab" },
